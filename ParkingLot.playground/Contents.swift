@@ -36,7 +36,7 @@ struct Observable<T> {
     }
 }
 
-class ParkingSpot  {
+class ParkingSpot: Equatable  {
     var isAvailable: Bool = true
     var vehicle: Vehicle?
     
@@ -50,7 +50,9 @@ class ParkingSpot  {
         isAvailable = true
     }
     
-    
+    static func ==(lhs: ParkingSpot, rhs: ParkingSpot) -> Bool {
+            return lhs === rhs
+    }
 }
 
 class ParkingLot {
