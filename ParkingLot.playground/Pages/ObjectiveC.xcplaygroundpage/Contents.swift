@@ -2,6 +2,53 @@
 
 import Foundation
 
+struct MyStruct {
+    var myVar = "myVar"
+    let myLet = "myLet"
+    
+    mutating func change(some: MyStruct){
+        self = some
+    }
+    
+}
+
+func testMutateString() {
+    //given
+    var myStruct = MyStruct()
+    print("0: \(myStruct.myVar)")
+    myStruct.myVar = "Something"
+    print("1: \(myStruct.myVar)")
+    
+    //Change var
+    //when
+    var myStructCopy = myStruct
+    myStructCopy.myVar = "Nothing"
+    print("2: \(myStructCopy.myVar)")
+    print("3: \(myStruct.myVar)")
+    //then
+    
+    var some = MyStruct()
+    some.myVar = "Anand"
+//    some.myLet = "Upadhyay"
+    myStruct.change(some: some)
+    print("4: \(myStruct.myVar)")
+    //XCTAssert(myStructCopy.myVar == "myVar changed 1")
+    
+    //Change let
+    //when
+//    withUnsafeMutableBytes(of: &myStructCopy) { bytes in
+//        let offset = MemoryLayout.offset(of: \MyStruct.myLet)!
+//        let rawPointerToValue = bytes.baseAddress! + offset
+//        let pointerToValue = rawPointerToValue.assumingMemoryBound(to: String.self)
+//        pointerToValue.pointee = "myLet changed"
+//    }
+    
+    //then
+//    XCTAssert(myStructCopy.myLet == "myLet changed")
+}
+
+testMutateString()
+
 /*
 What is Objective-C and how does it differ from C and C++?
 
