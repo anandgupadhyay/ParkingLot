@@ -10,6 +10,10 @@ struct MyStruct {
         self = some
     }
     
+    mutating func changeMyVar(newV : String)
+    {
+        self.myVar = newV
+    }
 }
 
 func testMutateString() {
@@ -32,6 +36,9 @@ func testMutateString() {
 //    some.myLet = "Upadhyay"
     myStruct.change(some: some)
     print("4: \(myStruct.myVar)")
+    
+    myStruct.changeMyVar(newV: "Upadhyay")
+    print("5: \(myStruct.myVar)")
     //XCTAssert(myStructCopy.myVar == "myVar changed 1")
     
     //Change let
