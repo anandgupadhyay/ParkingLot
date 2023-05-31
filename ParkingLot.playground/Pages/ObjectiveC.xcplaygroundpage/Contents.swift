@@ -54,7 +54,47 @@ func testMutateString() {
 //    XCTAssert(myStructCopy.myLet == "myLet changed")
 }
 
-testMutateString()
+//testMutateString()
+
+////Thread Explosion
+//let queue = DispatchQueue(label: "com.swiftpal.dispatch.explosion", attributes: .concurrent)
+//
+//for i in 0 ... 1000 {
+//    // Async Tasks
+//    queue.async {
+//        Thread.sleep(forTimeInterval: 1)
+//        print("Executed Task \(i)")
+//    }
+//}
+//
+//// Sync Task
+//DispatchQueue.main.sync {
+//    print("All Tasks Completed")
+//}
+//
+////Solving Thread Explosion
+//let concurrentTasks = 4
+//
+//// Create Concurrent Queue
+//let queue = DispatchQueue(label: "com.swiftpal.dispatch.explosion", attributes: .concurrent)
+//
+//// Create Semaphore object
+//let semaphore = DispatchSemaphore(value: concurrentTasks)
+//
+//for i in 0 ... 1000 {
+//    // Async Tasks
+//    queue.async {
+//        Thread.sleep(forTimeInterval: 1)
+//        print("Executed Task \(i)")
+//        semaphore.signal()   // Sema Count Increased
+//    }
+//    semaphore.wait() // Sema Count Decreased
+//}
+//
+//// Async Task
+//DispatchQueue.main.async {
+//    print("All Tasks Completed")
+//}
 
 /*
 What is Objective-C and how does it differ from C and C++?
